@@ -1,7 +1,8 @@
 {
-  "name": "app",
-  "version": "0.1.0",
+  "name": "svw-web-app",
   "private": true,
+  "version": "0.1.0",
+  "description": "SV Walddorf Next.JS App",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
