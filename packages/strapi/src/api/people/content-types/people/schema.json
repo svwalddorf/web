@@ -12,11 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "firstName": {
+    "firstname": {
       "type": "string",
       "required": true
     },
-    "lastName": {
+    "lastname": {
       "type": "string",
       "required": true
     },
@@ -28,7 +28,7 @@
         "images"
       ]
     },
-    "eMail": {
+    "email": {
       "type": "email"
     },
     "description": {
