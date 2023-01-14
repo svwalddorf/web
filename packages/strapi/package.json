@@ -5,6 +5,7 @@
   "description": "SV Walddorf Strapi CMS",
   "scripts": {
     "dev": "strapi develop",
+    "dev-admin": "strapi develop --watch-admin",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
