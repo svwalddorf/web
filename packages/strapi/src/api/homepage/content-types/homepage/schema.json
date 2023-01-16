@@ -28,6 +28,11 @@
       "type": "string",
       "required": true,
       "maxLength": 165
+    },
+    "header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.header"
     }
   }
 }

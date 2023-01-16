@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_global_contacts",
+  "info": {
+    "displayName": "Contact"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "street": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "telephone": {
+      "type": "string"
+    },
+    "telefax": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "club_roles",
+  "info": {
+    "singularName": "club-role",
+    "pluralName": "club-roles",
+    "displayName": "Rolle",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::club-role.club-role",
+      "mappedBy": "parent"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::club-role.club-role",
+      "inversedBy": "children"
+    }
+  }
+}
