@@ -39,6 +39,214 @@ export type BooleanFilterInput = {
   startsWith?: InputMaybe<Scalars['Boolean']>;
 };
 
+export type ClubRole = {
+  __typename?: 'ClubRole';
+  children?: Maybe<ClubRoleRelationResponseCollection>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  name: Scalars['String'];
+  parent?: Maybe<ClubRoleEntityResponse>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type ClubRoleChildrenArgs = {
+  filters?: InputMaybe<ClubRoleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ClubRoleEntity = {
+  __typename?: 'ClubRoleEntity';
+  attributes?: Maybe<ClubRole>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type ClubRoleEntityResponse = {
+  __typename?: 'ClubRoleEntityResponse';
+  data?: Maybe<ClubRoleEntity>;
+};
+
+export type ClubRoleEntityResponseCollection = {
+  __typename?: 'ClubRoleEntityResponseCollection';
+  data: Array<ClubRoleEntity>;
+  meta: ResponseCollectionMeta;
+};
+
+export type ClubRoleFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ClubRoleFiltersInput>>>;
+  children?: InputMaybe<ClubRoleFiltersInput>;
+  createdAt?: InputMaybe<DateTimeFilterInput>;
+  id?: InputMaybe<IdFilterInput>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ClubRoleFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ClubRoleFiltersInput>>>;
+  parent?: InputMaybe<ClubRoleFiltersInput>;
+  publishedAt?: InputMaybe<DateTimeFilterInput>;
+  updatedAt?: InputMaybe<DateTimeFilterInput>;
+};
+
+export type ClubRoleInput = {
+  children?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  name?: InputMaybe<Scalars['String']>;
+  parent?: InputMaybe<Scalars['ID']>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+};
+
+export type ClubRoleRelationResponseCollection = {
+  __typename?: 'ClubRoleRelationResponseCollection';
+  data: Array<ClubRoleEntity>;
+};
+
+export type ComponentGlobalContact = {
+  __typename?: 'ComponentGlobalContact';
+  city?: Maybe<Scalars['String']>;
+  email?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+  postalCode?: Maybe<Scalars['String']>;
+  street?: Maybe<Scalars['String']>;
+  telefax?: Maybe<Scalars['String']>;
+  telephone?: Maybe<Scalars['String']>;
+};
+
+export type ComponentGlobalContactInput = {
+  city?: InputMaybe<Scalars['String']>;
+  email?: InputMaybe<Scalars['String']>;
+  id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+  postalCode?: InputMaybe<Scalars['String']>;
+  street?: InputMaybe<Scalars['String']>;
+  telefax?: InputMaybe<Scalars['String']>;
+  telephone?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentGlobalFooter = {
+  __typename?: 'ComponentGlobalFooter';
+  id: Scalars['ID'];
+  labelLeft?: Maybe<Scalars['String']>;
+  labelRight?: Maybe<Scalars['String']>;
+  linkLists?: Maybe<Array<Maybe<ComponentSharedLinkLists>>>;
+};
+
+
+export type ComponentGlobalFooterLinkListsArgs = {
+  filters?: InputMaybe<ComponentSharedLinkListsFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentGlobalFooterInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  labelLeft?: InputMaybe<Scalars['String']>;
+  labelRight?: InputMaybe<Scalars['String']>;
+  linkLists?: InputMaybe<Array<InputMaybe<ComponentSharedLinkListsInput>>>;
+};
+
+export type ComponentGlobalHeader = {
+  __typename?: 'ComponentGlobalHeader';
+  id: Scalars['ID'];
+  pageLinks?: Maybe<Array<Maybe<ComponentSharedLink>>>;
+};
+
+
+export type ComponentGlobalHeaderPageLinksArgs = {
+  filters?: InputMaybe<ComponentSharedLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentGlobalHeaderInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  pageLinks?: InputMaybe<Array<InputMaybe<ComponentSharedLinkInput>>>;
+};
+
+export type ComponentSharedColumn = {
+  __typename?: 'ComponentSharedColumn';
+  id: Scalars['ID'];
+};
+
+export type ComponentSharedLink = {
+  __typename?: 'ComponentSharedLink';
+  href: Scalars['String'];
+  icon?: Maybe<UploadFileEntityResponse>;
+  id: Scalars['ID'];
+  isDownload?: Maybe<Scalars['Boolean']>;
+  isExternal?: Maybe<Scalars['Boolean']>;
+  target?: Maybe<Enum_Componentsharedlink_Target>;
+  text?: Maybe<Scalars['String']>;
+};
+
+export type ComponentSharedLinkFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSharedLinkFiltersInput>>>;
+  href?: InputMaybe<StringFilterInput>;
+  isDownload?: InputMaybe<BooleanFilterInput>;
+  isExternal?: InputMaybe<BooleanFilterInput>;
+  not?: InputMaybe<ComponentSharedLinkFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentSharedLinkFiltersInput>>>;
+  target?: InputMaybe<StringFilterInput>;
+  text?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentSharedLinkInput = {
+  href?: InputMaybe<Scalars['String']>;
+  icon?: InputMaybe<Scalars['ID']>;
+  id?: InputMaybe<Scalars['ID']>;
+  isDownload?: InputMaybe<Scalars['Boolean']>;
+  isExternal?: InputMaybe<Scalars['Boolean']>;
+  target?: InputMaybe<Enum_Componentsharedlink_Target>;
+  text?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentSharedLinkLists = {
+  __typename?: 'ComponentSharedLinkLists';
+  id: Scalars['ID'];
+  links?: Maybe<Array<Maybe<ComponentSharedLink>>>;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+export type ComponentSharedLinkListsLinksArgs = {
+  filters?: InputMaybe<ComponentSharedLinkFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentSharedLinkListsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSharedLinkListsFiltersInput>>>;
+  links?: InputMaybe<ComponentSharedLinkFiltersInput>;
+  not?: InputMaybe<ComponentSharedLinkListsFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentSharedLinkListsFiltersInput>>>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentSharedLinkListsInput = {
+  id?: InputMaybe<Scalars['ID']>;
+  links?: InputMaybe<Array<InputMaybe<ComponentSharedLinkInput>>>;
+  title?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentSharedSocialMedia = {
+  __typename?: 'ComponentSharedSocialMedia';
+  icon?: Maybe<UploadFileEntityResponse>;
+  id: Scalars['ID'];
+  name?: Maybe<Scalars['String']>;
+};
+
+export type ComponentSharedSocialMediaFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSharedSocialMediaFiltersInput>>>;
+  name?: InputMaybe<StringFilterInput>;
+  not?: InputMaybe<ComponentSharedSocialMediaFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentSharedSocialMediaFiltersInput>>>;
+};
+
+export type ComponentSharedSocialMediaInput = {
+  icon?: InputMaybe<Scalars['ID']>;
+  id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
@@ -62,6 +270,13 @@ export type DateTimeFilterInput = {
   or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>;
   startsWith?: InputMaybe<Scalars['DateTime']>;
 };
+
+export enum Enum_Componentsharedlink_Target {
+  Blank = 'blank',
+  Parent = 'parent',
+  Self = 'self',
+  Top = 'top'
+}
 
 export type FileInfoInput = {
   alternativeText?: InputMaybe<Scalars['String']>;
@@ -93,13 +308,51 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Homepage | I18NLocale | People | SocialMedia | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = ClubRole | ComponentGlobalContact | ComponentGlobalFooter | ComponentGlobalHeader | ComponentSharedColumn | ComponentSharedLink | ComponentSharedLinkLists | ComponentSharedSocialMedia | Global | Homepage | I18NLocale | People | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+
+export type Global = {
+  __typename?: 'Global';
+  contact?: Maybe<ComponentGlobalContact>;
+  createdAt?: Maybe<Scalars['DateTime']>;
+  footer?: Maybe<ComponentGlobalFooter>;
+  header?: Maybe<ComponentGlobalHeader>;
+  publishedAt?: Maybe<Scalars['DateTime']>;
+  socialMedias?: Maybe<Array<Maybe<ComponentSharedSocialMedia>>>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
+};
+
+
+export type GlobalSocialMediasArgs = {
+  filters?: InputMaybe<ComponentSharedSocialMediaFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type GlobalEntity = {
+  __typename?: 'GlobalEntity';
+  attributes?: Maybe<Global>;
+  id?: Maybe<Scalars['ID']>;
+};
+
+export type GlobalEntityResponse = {
+  __typename?: 'GlobalEntityResponse';
+  data?: Maybe<GlobalEntity>;
+};
+
+export type GlobalInput = {
+  contact?: InputMaybe<ComponentGlobalContactInput>;
+  footer?: InputMaybe<ComponentGlobalFooterInput>;
+  header?: InputMaybe<ComponentGlobalHeaderInput>;
+  publishedAt?: InputMaybe<Scalars['DateTime']>;
+  socialMedias?: InputMaybe<Array<InputMaybe<ComponentSharedSocialMediaInput>>>;
+};
 
 export type Homepage = {
   __typename?: 'Homepage';
   createdAt?: Maybe<Scalars['DateTime']>;
   description: Scalars['String'];
   favicon?: Maybe<UploadFileEntityResponse>;
+  header?: Maybe<ComponentGlobalHeader>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   updatedAt?: Maybe<Scalars['DateTime']>;
@@ -119,6 +372,7 @@ export type HomepageEntityResponse = {
 export type HomepageInput = {
   description?: InputMaybe<Scalars['String']>;
   favicon?: InputMaybe<Scalars['ID']>;
+  header?: InputMaybe<ComponentGlobalHeaderInput>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   title?: InputMaybe<Scalars['String']>;
 };
@@ -235,17 +489,18 @@ export type Mutation = {
   __typename?: 'Mutation';
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>;
+  createClubRole?: Maybe<ClubRoleEntityResponse>;
   createPeople?: Maybe<PeopleEntityResponse>;
-  createSocialMedia?: Maybe<SocialMediaEntityResponse>;
   createUploadFile?: Maybe<UploadFileEntityResponse>;
   createUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>;
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse;
+  deleteClubRole?: Maybe<ClubRoleEntityResponse>;
+  deleteGlobal?: Maybe<GlobalEntityResponse>;
   deleteHomepage?: Maybe<HomepageEntityResponse>;
   deletePeople?: Maybe<PeopleEntityResponse>;
-  deleteSocialMedia?: Maybe<SocialMediaEntityResponse>;
   deleteUploadFile?: Maybe<UploadFileEntityResponse>;
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Delete an existing role */
@@ -263,10 +518,11 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>;
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>;
+  updateClubRole?: Maybe<ClubRoleEntityResponse>;
   updateFileInfo: UploadFileEntityResponse;
+  updateGlobal?: Maybe<GlobalEntityResponse>;
   updateHomepage?: Maybe<HomepageEntityResponse>;
   updatePeople?: Maybe<PeopleEntityResponse>;
-  updateSocialMedia?: Maybe<SocialMediaEntityResponse>;
   updateUploadFile?: Maybe<UploadFileEntityResponse>;
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>;
   /** Update an existing role */
@@ -284,13 +540,13 @@ export type MutationChangePasswordArgs = {
 };
 
 
-export type MutationCreatePeopleArgs = {
-  data: PeopleInput;
+export type MutationCreateClubRoleArgs = {
+  data: ClubRoleInput;
 };
 
 
-export type MutationCreateSocialMediaArgs = {
-  data: SocialMediaInput;
+export type MutationCreatePeopleArgs = {
+  data: PeopleInput;
 };
 
 
@@ -314,12 +570,12 @@ export type MutationCreateUsersPermissionsUserArgs = {
 };
 
 
-export type MutationDeletePeopleArgs = {
+export type MutationDeleteClubRoleArgs = {
   id: Scalars['ID'];
 };
 
 
-export type MutationDeleteSocialMediaArgs = {
+export type MutationDeletePeopleArgs = {
   id: Scalars['ID'];
 };
 
@@ -384,9 +640,20 @@ export type MutationResetPasswordArgs = {
 };
 
 
+export type MutationUpdateClubRoleArgs = {
+  data: ClubRoleInput;
+  id: Scalars['ID'];
+};
+
+
 export type MutationUpdateFileInfoArgs = {
   id: Scalars['ID'];
   info?: InputMaybe<FileInfoInput>;
+};
+
+
+export type MutationUpdateGlobalArgs = {
+  data: GlobalInput;
 };
 
 
@@ -397,12 +664,6 @@ export type MutationUpdateHomepageArgs = {
 
 export type MutationUpdatePeopleArgs = {
   data: PeopleInput;
-  id: Scalars['ID'];
-};
-
-
-export type MutationUpdateSocialMediaArgs = {
-  data: SocialMediaInput;
   id: Scalars['ID'];
 };
 
@@ -520,14 +781,15 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query';
+  clubRole?: Maybe<ClubRoleEntityResponse>;
+  clubRoles?: Maybe<ClubRoleEntityResponseCollection>;
+  global?: Maybe<GlobalEntityResponse>;
   homepage?: Maybe<HomepageEntityResponse>;
   i18NLocale?: Maybe<I18NLocaleEntityResponse>;
   i18NLocales?: Maybe<I18NLocaleEntityResponseCollection>;
   me?: Maybe<UsersPermissionsMe>;
   people?: Maybe<PeopleEntityResponse>;
   peoples?: Maybe<PeopleEntityResponseCollection>;
-  socialMedia?: Maybe<SocialMediaEntityResponse>;
-  socialMedias?: Maybe<SocialMediaEntityResponseCollection>;
   uploadFile?: Maybe<UploadFileEntityResponse>;
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>;
   uploadFolder?: Maybe<UploadFolderEntityResponse>;
@@ -536,6 +798,24 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>;
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>;
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>;
+};
+
+
+export type QueryClubRoleArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+};
+
+
+export type QueryClubRolesArgs = {
+  filters?: InputMaybe<ClubRoleFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  publicationState?: InputMaybe<PublicationState>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+export type QueryGlobalArgs = {
+  publicationState?: InputMaybe<PublicationState>;
 };
 
 
@@ -563,19 +843,6 @@ export type QueryPeopleArgs = {
 
 export type QueryPeoplesArgs = {
   filters?: InputMaybe<PeopleFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-
-export type QuerySocialMediaArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type QuerySocialMediasArgs = {
-  filters?: InputMaybe<SocialMediaFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   publicationState?: InputMaybe<PublicationState>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
@@ -632,59 +899,6 @@ export type QueryUsersPermissionsUsersArgs = {
 export type ResponseCollectionMeta = {
   __typename?: 'ResponseCollectionMeta';
   pagination: Pagination;
-};
-
-export type SocialMedia = {
-  __typename?: 'SocialMedia';
-  createdAt?: Maybe<Scalars['DateTime']>;
-  icon?: Maybe<UploadFileRelationResponseCollection>;
-  name: Scalars['String'];
-  publishedAt?: Maybe<Scalars['DateTime']>;
-  updatedAt?: Maybe<Scalars['DateTime']>;
-  url: Scalars['String'];
-};
-
-
-export type SocialMediaIconArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
-export type SocialMediaEntity = {
-  __typename?: 'SocialMediaEntity';
-  attributes?: Maybe<SocialMedia>;
-  id?: Maybe<Scalars['ID']>;
-};
-
-export type SocialMediaEntityResponse = {
-  __typename?: 'SocialMediaEntityResponse';
-  data?: Maybe<SocialMediaEntity>;
-};
-
-export type SocialMediaEntityResponseCollection = {
-  __typename?: 'SocialMediaEntityResponseCollection';
-  data: Array<SocialMediaEntity>;
-  meta: ResponseCollectionMeta;
-};
-
-export type SocialMediaFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
-  createdAt?: InputMaybe<DateTimeFilterInput>;
-  id?: InputMaybe<IdFilterInput>;
-  name?: InputMaybe<StringFilterInput>;
-  not?: InputMaybe<SocialMediaFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<SocialMediaFiltersInput>>>;
-  publishedAt?: InputMaybe<DateTimeFilterInput>;
-  updatedAt?: InputMaybe<DateTimeFilterInput>;
-  url?: InputMaybe<StringFilterInput>;
-};
-
-export type SocialMediaInput = {
-  icon?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  name?: InputMaybe<Scalars['String']>;
-  publishedAt?: InputMaybe<Scalars['DateTime']>;
-  url?: InputMaybe<Scalars['String']>;
 };
 
 export type StringFilterInput = {
@@ -1084,7 +1298,9 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type IndexDataQueryVariables = Exact<{ [key: string]: never; }>;
+export type LinkFragmentFragment = { __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null };
+
+export type GlobalQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexDataQuery = { __typename?: 'Query', homepage?: { __typename?: 'HomepageEntityResponse', data?: { __typename?: 'HomepageEntity', id?: string | null, attributes?: { __typename?: 'Homepage', title: string, description: string, favicon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null } | null } | null } | null };
+export type GlobalQuery = { __typename?: 'Query', global?: { __typename?: 'GlobalEntityResponse', data?: { __typename?: 'GlobalEntity', id?: string | null, attributes?: { __typename?: 'Global', header?: { __typename?: 'ComponentGlobalHeader', id: string, pageLinks?: Array<{ __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null } | null, footer?: { __typename?: 'ComponentGlobalFooter', id: string, labelLeft?: string | null, labelRight?: string | null, linkLists?: Array<{ __typename?: 'ComponentSharedLinkLists', id: string, title?: string | null, links?: Array<{ __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null } | null> | null } | null, socialMedias?: Array<{ __typename?: 'ComponentSharedSocialMedia', id: string, name?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, contact?: { __typename?: 'ComponentGlobalContact', id: string, name?: string | null, street?: string | null, postalCode?: string | null, city?: string | null, telephone?: string | null, telefax?: string | null, email?: string | null } | null } | null } | null } | null };

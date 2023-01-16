@@ -1,39 +1,26 @@
 import client from "../lib/graphql/client";
-import { INDEX_DATA } from "./index.gql";
-import { IndexDataQuery } from "../lib/graphql/generated";
-import { Head } from "../components/Head/Head";
+import { GlobalData, GLOBAL } from "../lib/graphql/global.gql";
+import { GetServerSideProps } from "next";
+import { GlobalQuery } from "../lib/graphql/generated";
+import Layout from "../components/Layout/Layout";
 
 type IndexServerSideProps = {
-  title: string;
-  description?: string;
-  favicon?: string;
+  global?: GlobalData | null;
 };
 
-export async function getServerSideProps(): Promise<{
-  props: IndexServerSideProps;
-}> {
-  const { data } = await client.query<IndexDataQuery>({
-    query: INDEX_DATA,
+export const getServerSideProps: GetServerSideProps<
+  IndexServerSideProps
+> = async () => {
+  const { data: globalData } = await client.query<GlobalQuery>({
+    query: GLOBAL,
   });
-  const page = data.homepage?.data?.attributes;
   return {
     props: {
-      title: page?.title ?? "",
-      description: page?.description,
-      favicon: page?.favicon?.data?.attributes?.url,
+      global: globalData.global?.data?.attributes,
     },
   };
-}
+};
 
-export default function Index({
-  title,
-  favicon,
-  description,
-}: IndexServerSideProps) {
-  return (
-    <>
-      <Head title={title} favicon={favicon} description={description} />
-      <main>{title}</main>
-    </>
-  );
+export default function Index({ global }: IndexServerSideProps) {
+  return <Layout global={global}></Layout>;
 }
