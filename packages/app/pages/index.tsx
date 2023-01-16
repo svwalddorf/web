@@ -1,7 +1,7 @@
-import client from "../src/graphql/client";
+import client from "../lib/graphql/client";
 import { INDEX_DATA } from "./index.gql";
-import { IndexDataQuery } from "../src/graphql/generated";
-import { Head } from "../src/components/Head/Head";
+import { IndexDataQuery } from "../lib/graphql/generated";
+import { Head } from "../components/Head/Head";
 
 type IndexServerSideProps = {
   title: string;
