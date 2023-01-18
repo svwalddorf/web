@@ -5,27 +5,31 @@ import {
   InMemoryCache,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import server from "./mock/server";
 
-function createLink() {
-  const useMockedBackend = process.env.NEXT_PUBLIC_BACKEND_URL === undefined;
-  if (useMockedBackend) {
-    server.listen();
-    const uri = `http://localhost:3000/graphql`;
-    return new HttpLink({ uri });
-  }
-
-  const authLink = setContext((_, { headers }) => ({
+function authLink(): ApolloLink {
+  return setContext((_, { headers }) => ({
     headers: {
       ...headers,
       authorization: `Bearer ${process.env.NEXT_PUBLIC_BACKEND_TOKEN}`,
     },
   }));
-  const httpLink = new HttpLink({
+}
+
+function httpLink(): ApolloLink {
+  return new HttpLink({
     uri: `${process.env.NEXT_PUBLIC_BACKEND_URL}/graphql`,
   });
-  return ApolloLink.from([authLink, httpLink]);
 }
+
+function createLink() {
+  const links = [];
+  if (process.env.NEXT_PUBLIC_BACKEND_TOKEN) {
+    links.push(authLink());
+  }
+  links.push(httpLink());
+  return ApolloLink.from(links);
+}
+
 const client = new ApolloClient({
   name: "svw-web-app-apollo-client",
   cache: new InMemoryCache(),
