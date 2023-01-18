@@ -1,8 +1,8 @@
 {
-  "name": "svw-web-strapi",
+  "name": "svw-web-backend",
   "private": true,
   "version": "0.1.0",
-  "description": "SV Walddorf Strapi CMS",
+  "description": "SV Walddorf website CMS powered by Strapi",
   "scripts": {
     "dev": "strapi develop",
     "dev-admin": "strapi develop --watch-admin",
@@ -15,7 +15,8 @@
     "@strapi/plugin-i18n": "^4.5.6",
     "@strapi/plugin-users-permissions": "^4.5.6",
     "@strapi/strapi": "^4.5.6",
-    "better-sqlite3": "^8.0.1"
+    "better-sqlite3": "^8.0.1",
+    "prettier": "^2.8.3"
   },
   "author": {
     "name": "A Strapi developer"
@@ -27,5 +28,8 @@
     "node": ">=14.19.1 <=18.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.8.3"
+  }
 }
