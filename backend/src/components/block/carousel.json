@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_block_carousels",
+  "info": {
+    "displayName": "ArticleCarousel",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "maxArticles": {
+      "type": "integer",
+      "default": 3,
+      "max": 6,
+      "min": 1
+    }
+  }
+}
