@@ -41,7 +41,8 @@
     "contents": {
       "type": "dynamiczone",
       "components": [
-        "block.carousel"
+        "block.carousel",
+        "block.rich-text"
       ]
     }
   }

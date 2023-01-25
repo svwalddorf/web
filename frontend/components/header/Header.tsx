@@ -75,7 +75,7 @@ function AccessHeader({ socialMedia }: AccessHeaderProps): JSX.Element {
   return (
     <div className="flex flex-row place-content-end">
       {socialMedia?.map((item) => (
-        <Link href={item.url ?? ""} target="_blank">
+        <Link key={item.name} href={item.url ?? ""} target="_blank">
           <Image src={getFullAssetUrl(item.icon?.data?.attributes?.url ?? "")} alt="" width={28} height={28} />
         </Link>
       ))}

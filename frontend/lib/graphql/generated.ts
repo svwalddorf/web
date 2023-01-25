@@ -106,6 +106,12 @@ export type ComponentBlockCarousel = {
   maxArticles?: Maybe<Scalars['Int']>;
 };
 
+export type ComponentBlockRichText = {
+  __typename?: 'ComponentBlockRichText';
+  content?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+};
+
 export type ComponentGlobalContact = {
   __typename?: 'ComponentGlobalContact';
   city?: Maybe<Scalars['String']>;
@@ -372,7 +378,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Article | ComponentBlockCarousel | ComponentGlobalContact | ComponentGlobalFooter | ComponentGlobalHeader | ComponentSharedColumn | ComponentSharedLink | ComponentSharedLinkLists | ComponentSharedMeta | ComponentSharedSocialMedia | Homepage | I18NLocale | Page | People | Sponsor | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | ComponentBlockCarousel | ComponentBlockRichText | ComponentGlobalContact | ComponentGlobalFooter | ComponentGlobalHeader | ComponentSharedColumn | ComponentSharedLink | ComponentSharedLinkLists | ComponentSharedMeta | ComponentSharedSocialMedia | Homepage | I18NLocale | Page | People | Sponsor | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -829,7 +835,7 @@ export type PageTagsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type PageContentsDynamicZone = ComponentBlockCarousel | Error;
+export type PageContentsDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | Error;
 
 export type PageEntity = {
   __typename?: 'PageEntity';
@@ -1618,10 +1624,17 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
+export type PageDataQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
+
 export type IndexPageDataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type IndexPageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, contents?: Array<{ __typename: 'ComponentBlockCarousel', maxArticles?: number | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
+export type IndexPageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
 
 export type PromotionArticlesQueryVariables = Exact<{
   limit: Scalars['Int'];

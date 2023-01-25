@@ -45,11 +45,10 @@
         "images"
       ]
     },
-    "contents": {
-      "type": "dynamiczone",
-      "components": [
-        "block.carousel"
-      ]
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   }
 }

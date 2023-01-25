@@ -13,3 +13,11 @@ form {
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
+
+h1 {
+    font-size: 2.25rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}

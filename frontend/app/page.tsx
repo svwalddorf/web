@@ -1,18 +1,11 @@
-import { fetchIndexPageData } from "#/app/index.gql";
-import { BlockManager } from "#/components/BlockManager";
+import { fetchPageData } from "#/lib/graphql/page.gql";
+import { NextPageProps } from "#/lib/types";
+import { Page } from "#/components/page/Page";
 
-export default async function IndexPage(props: any): Promise<JSX.Element> {
-  const indexPageData = await fetchIndexPageData();
-  return (
-    <div className="bg-neutral-100">
-      {indexPageData?.attributes?.contents?.map((block) => (
-        <BlockManager block={block} />
-      ))}
-      <div className="pt-16 mx-8 container">
-        <p>index page</p>
-        <p>params: {JSON.stringify(props)}</p>
-        <p>data: {JSON.stringify(indexPageData)}</p>
-      </div>
-    </div>
-  );
+export default async function IndexPage(): Promise<JSX.Element | null> {
+  const pageData = await fetchPageData("index");
+  if (pageData?.attributes?.contents) {
+    return <Page contents={pageData.attributes.contents} />;
+  }
+  return null;
 }
