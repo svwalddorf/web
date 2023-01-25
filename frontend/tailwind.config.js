@@ -5,11 +5,11 @@ module.exports = {
     extend: {
       colors: {
         "svw-blue": {
-          lightest: "#2894c5",
-          lighter: "#0686BD",
-          default: "#057db1",
-          darker: "#056B96",
-          darkest: "#035070",
+          lightest: "#9BEBFF",
+          lighter: "#5EB2EA",
+          default: "#057DB1",
+          darker: "#004877",
+          darkest: "#00173F",
         },
       },
     },
