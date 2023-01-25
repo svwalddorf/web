@@ -19,7 +19,7 @@ module.exports = {
   },
   safelist: [
     {
-      pattern: /^(w-)|(m-)|(mt-)|(mb-).*/,
+      pattern: /^(w-)|(mt-).*/,
       variants: ["sm", "md", "lg", "xl", "2xl"],
     },
   ],
