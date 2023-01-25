@@ -12,7 +12,6 @@ export type Scalars = {
   Float: number;
   Date: any;
   DateTime: any;
-  HomepageContentsDynamicZoneInput: any;
   JSON: any;
   PageContentsDynamicZoneInput: any;
   Upload: any;
@@ -383,11 +382,11 @@ export type GenericMorph = Article | ComponentBlockCarousel | ComponentBlockRich
 export type Homepage = {
   __typename?: 'Homepage';
   contact?: Maybe<ComponentGlobalContact>;
-  contents?: Maybe<Array<Maybe<HomepageContentsDynamicZone>>>;
   createdAt?: Maybe<Scalars['DateTime']>;
   footer?: Maybe<ComponentGlobalFooter>;
   logo?: Maybe<UploadFileEntityResponse>;
   meta?: Maybe<ComponentSharedMeta>;
+  page?: Maybe<PageEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   socialMedia?: Maybe<Array<Maybe<ComponentSharedSocialMedia>>>;
   subPages?: Maybe<PageRelationResponseCollection>;
@@ -409,8 +408,6 @@ export type HomepageSubPagesArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type HomepageContentsDynamicZone = ComponentBlockCarousel | Error;
-
 export type HomepageEntity = {
   __typename?: 'HomepageEntity';
   attributes?: Maybe<Homepage>;
@@ -424,10 +421,10 @@ export type HomepageEntityResponse = {
 
 export type HomepageInput = {
   contact?: InputMaybe<ComponentGlobalContactInput>;
-  contents?: InputMaybe<Array<Scalars['HomepageContentsDynamicZoneInput']>>;
   footer?: InputMaybe<ComponentGlobalFooterInput>;
   logo?: InputMaybe<Scalars['ID']>;
   meta?: InputMaybe<ComponentSharedMetaInput>;
+  page?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   socialMedia?: InputMaybe<Array<InputMaybe<ComponentSharedSocialMediaInput>>>;
   subPages?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
@@ -1624,18 +1621,6 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>;
 };
 
-export type PageDataQueryVariables = Exact<{
-  slug: Scalars['String'];
-}>;
-
-
-export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
-
-export type IndexPageDataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type IndexPageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
-
 export type PromotionArticlesQueryVariables = Exact<{
   limit: Scalars['Int'];
 }>;
@@ -1649,3 +1634,10 @@ export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'HomepageEntityResponse', data?: { __typename?: 'HomepageEntity', id?: string | null, attributes?: { __typename?: 'Homepage', meta?: { __typename?: 'ComponentSharedMeta', id: string, title: string, description?: string | null, favicon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, name: string } | null } | null } | null } | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, footer?: { __typename?: 'ComponentGlobalFooter', id: string, labelLeft?: string | null, labelRight?: string | null, linkLists?: Array<{ __typename?: 'ComponentSharedLinkLists', id: string, title?: string | null, titleUrl?: string | null, pageLinks?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null, links?: Array<{ __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null } | null> | null } | null, socialMedia?: Array<{ __typename?: 'ComponentSharedSocialMedia', id: string, name?: string | null, url?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, contact?: { __typename?: 'ComponentGlobalContact', id: string, name?: string | null, street?: string | null, postalCode?: string | null, city?: string | null, telephone?: string | null, telefax?: string | null, email?: string | null } | null, subPages?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null } | null } | null } | null };
+
+export type PageDataQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
