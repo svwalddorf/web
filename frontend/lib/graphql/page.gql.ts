@@ -11,6 +11,7 @@ export const PAGE_DATA = gql`
         attributes {
           title
           slug
+          inContainer
           contents {
             __typename
             ... on ComponentBlockCarousel {
@@ -21,6 +22,43 @@ export const PAGE_DATA = gql`
               id
               content
             }
+            ... on ComponentSharedSpacing {
+              id
+              width
+              height
+            }
+          }
+          leftContent {
+            __typename
+            ... on ComponentBlockCarousel {
+              id
+              maxArticles
+            }
+            ... on ComponentBlockRichText {
+              id
+              content
+            }
+            ... on ComponentSharedSpacing {
+              id
+              width
+              height
+            }
+          }
+          rightContent {
+            __typename
+            ... on ComponentBlockCarousel {
+              id
+              maxArticles
+            }
+            ... on ComponentBlockRichText {
+              id
+              content
+            }
+            ... on ComponentSharedSpacing {
+              id
+              width
+              height
+            }
           }
         }
       }
@@ -30,6 +68,8 @@ export const PAGE_DATA = gql`
 
 export type PageData = ExtractType<PageDataQuery, ["pages", "data"]>;
 export type DynamicContentData = ExtractType<PageData, ["attributes", "contents"]>;
+export type LeftDynamicContentData = ExtractType<PageData, ["attributes", "leftContent"]>;
+export type RightDynamicContentData = ExtractType<PageData, ["attributes", "rightContent"]>;
 
 export async function fetchPageData(slug: string): Promise<PageData | undefined> {
   const { data } = await client.query<PageDataQuery>({

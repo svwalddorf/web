@@ -7,7 +7,7 @@ export default function RichText({ content }: Props): JSX.Element | null {
   if (content) {
     return (
       <div className="mx-4">
-        <ReactMarkdown skipHtml>{content}</ReactMarkdown>
+        <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     );
   }

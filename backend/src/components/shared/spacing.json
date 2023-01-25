@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_spacings",
+  "info": {
+    "displayName": "Spacing",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "width": {
+      "type": "string"
+    },
+    "height": {
+      "type": "string"
+    }
+  }
+}

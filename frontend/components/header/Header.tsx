@@ -53,7 +53,7 @@ function LargeScreenNavigation({ menuItems, logo, socialMedia }: MenuProps): JSX
                 <>
                   <Link
                     href={menuItem.slug}
-                    className={`py-2 px-4 ${array.length - 1 !== index ? "border-r border-neutral-300" : ""}`}
+                    className={`py-2 px-3 ${array.length - 1 !== index ? "border-r border-neutral-300" : ""}`}
                   >
                     {menuItem.title}
                   </Link>

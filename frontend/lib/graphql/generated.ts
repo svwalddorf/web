@@ -14,6 +14,8 @@ export type Scalars = {
   DateTime: any;
   JSON: any;
   PageContentsDynamicZoneInput: any;
+  PageLeftContentDynamicZoneInput: any;
+  PageRightContentDynamicZoneInput: any;
   Upload: any;
 };
 
@@ -286,6 +288,13 @@ export type ComponentSharedSocialMediaInput = {
   url?: InputMaybe<Scalars['String']>;
 };
 
+export type ComponentSharedSpacing = {
+  __typename?: 'ComponentSharedSpacing';
+  height?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  width?: Maybe<Scalars['String']>;
+};
+
 export type DateFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
   between?: InputMaybe<Array<InputMaybe<Scalars['Date']>>>;
@@ -377,7 +386,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Article | ComponentBlockCarousel | ComponentBlockRichText | ComponentGlobalContact | ComponentGlobalFooter | ComponentGlobalHeader | ComponentSharedColumn | ComponentSharedLink | ComponentSharedLinkLists | ComponentSharedMeta | ComponentSharedSocialMedia | Homepage | I18NLocale | Page | People | Sponsor | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | ComponentBlockCarousel | ComponentBlockRichText | ComponentGlobalContact | ComponentGlobalFooter | ComponentGlobalHeader | ComponentSharedColumn | ComponentSharedLink | ComponentSharedLinkLists | ComponentSharedMeta | ComponentSharedSocialMedia | ComponentSharedSpacing | Homepage | I18NLocale | Page | People | Sponsor | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -807,8 +816,11 @@ export type Page = {
   __typename?: 'Page';
   contents?: Maybe<Array<Maybe<PageContentsDynamicZone>>>;
   createdAt?: Maybe<Scalars['DateTime']>;
+  inContainer: Scalars['Boolean'];
+  leftContent?: Maybe<Array<Maybe<PageLeftContentDynamicZone>>>;
   parentPage?: Maybe<PageEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
+  rightContent?: Maybe<Array<Maybe<PageRightContentDynamicZone>>>;
   slug: Scalars['String'];
   subPages?: Maybe<PageRelationResponseCollection>;
   tags?: Maybe<TagRelationResponseCollection>;
@@ -832,7 +844,7 @@ export type PageTagsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type PageContentsDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | Error;
+export type PageContentsDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | ComponentSharedSpacing | Error;
 
 export type PageEntity = {
   __typename?: 'PageEntity';
@@ -855,6 +867,7 @@ export type PageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
   createdAt?: InputMaybe<DateTimeFilterInput>;
   id?: InputMaybe<IdFilterInput>;
+  inContainer?: InputMaybe<BooleanFilterInput>;
   not?: InputMaybe<PageFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>;
   parentPage?: InputMaybe<PageFiltersInput>;
@@ -868,18 +881,25 @@ export type PageFiltersInput = {
 
 export type PageInput = {
   contents?: InputMaybe<Array<Scalars['PageContentsDynamicZoneInput']>>;
+  inContainer?: InputMaybe<Scalars['Boolean']>;
+  leftContent?: InputMaybe<Array<Scalars['PageLeftContentDynamicZoneInput']>>;
   parentPage?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
+  rightContent?: InputMaybe<Array<Scalars['PageRightContentDynamicZoneInput']>>;
   slug?: InputMaybe<Scalars['String']>;
   subPages?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   title?: InputMaybe<Scalars['String']>;
 };
 
+export type PageLeftContentDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | ComponentSharedSpacing | Error;
+
 export type PageRelationResponseCollection = {
   __typename?: 'PageRelationResponseCollection';
   data: Array<PageEntity>;
 };
+
+export type PageRightContentDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | ComponentSharedSpacing | Error;
 
 export type Pagination = {
   __typename?: 'Pagination';
@@ -1640,4 +1660,4 @@ export type PageDataQueryVariables = Exact<{
 }>;
 
 
-export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
+export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, inContainer: boolean, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, leftContent?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, rightContent?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };

@@ -1,10 +1,4 @@
-import {
-  ApolloClient,
-  ApolloLink,
-  concat,
-  HttpLink,
-  InMemoryCache,
-} from "@apollo/client";
+import { ApolloClient, ApolloLink, concat, HttpLink, InMemoryCache } from "@apollo/client";
 
 const httpLink = new HttpLink({
   uri: `${process.env.NEXT_PUBLIC_BACKEND_URL}/graphql`,
@@ -35,7 +29,13 @@ const authMiddleware = new ApolloLink((operation, forward) => {
 
 const client = new ApolloClient({
   name: "svw-web-app-apollo-client",
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Page: {
+        keyFields: ["slug"],
+      },
+    },
+  }),
   link: concat(authMiddleware, httpLink),
 });
 

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_block_rich_texts",
   "info": {
-    "displayName": "RichText"
+    "displayName": "RichText",
+    "description": ""
   },
   "options": {},
   "attributes": {

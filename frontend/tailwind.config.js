@@ -17,5 +17,11 @@ module.exports = {
       center: true,
     },
   },
+  safelist: [
+    {
+      pattern: /^(w-)|(m-)|(mt-)|(mb-).*/,
+      variants: ["sm", "md", "lg", "xl", "2xl"],
+    },
+  ],
   plugins: [],
 };

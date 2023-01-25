@@ -42,8 +42,30 @@
       "type": "dynamiczone",
       "components": [
         "block.carousel",
-        "block.rich-text"
+        "block.rich-text",
+        "shared.spacing"
       ]
+    },
+    "leftContent": {
+      "type": "dynamiczone",
+      "components": [
+        "block.carousel",
+        "block.rich-text",
+        "shared.spacing"
+      ]
+    },
+    "rightContent": {
+      "type": "dynamiczone",
+      "components": [
+        "block.carousel",
+        "block.rich-text",
+        "shared.spacing"
+      ]
+    },
+    "inContainer": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

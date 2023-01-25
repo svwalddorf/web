@@ -8,7 +8,7 @@ export default function Footer({
   contact,
 }: FooterData & { contact?: ContactData | null }): JSX.Element {
   return (
-    <footer className="bg-neutral-200 border-t-4 border-svw-blue-default text-sm">
+    <footer className="mt-12 bg-neutral-200 border-t-4 border-svw-blue-default text-sm">
       <div className="container py-8 px-4">
         <div className="flex flex-row flex-wrap gap-x-12 gap-y-4 justify-between">
           {linkLists?.map((linkList) => (
@@ -17,7 +17,9 @@ export default function Footer({
           {contact && (
             <div key="contact">
               <ul className="list-none">
-                <li className="font-bold">{contact.name}</li>
+                <li className="font-bold">
+                  <h4>{contact.name}</h4>
+                </li>
                 <li>{contact.street}</li>
                 <li>
                   {contact.postalCode} {contact.city}
@@ -43,9 +45,9 @@ type LinkListProps = { linkList: FooterLinkListData };
 function LinkList({ linkList }: LinkListProps): JSX.Element {
   return (
     <div key={linkList.id}>
-      <h3 className="font-bold">
+      <h4 className="font-bold">
         {linkList.titleUrl ? <Link href={linkList.titleUrl}>{linkList.title}</Link> : linkList.title}
-      </h3>
+      </h4>
       <ul className="list-none">
         {linkList.pageLinks?.data.map((pageLink) => {
           if (pageLink && pageLink.attributes?.slug) {
