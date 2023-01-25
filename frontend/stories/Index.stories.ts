@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { within, userEvent } from "@storybook/testing-library";
-import IndexPage from "../pages";
+import IndexPage from "../old/pages";
 import { defaultGraph } from "../lib/graphql/mock/graph";
 
 const meta: Meta<typeof IndexPage> = {

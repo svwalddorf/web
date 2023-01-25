@@ -12,11 +12,32 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string",
-      "required": true
+    "subPages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page"
     },
-    "favicon": {
+    "meta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.meta"
+    },
+    "contact": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.contact"
+    },
+    "socialMedia": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.social-media"
+    },
+    "footer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "global.footer"
+    },
+    "logo": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -24,15 +45,11 @@
         "images"
       ]
     },
-    "description": {
-      "type": "string",
-      "required": true,
-      "maxLength": 165
-    },
-    "header": {
-      "type": "component",
-      "repeatable": false,
-      "component": "global.header"
+    "contents": {
+      "type": "dynamiczone",
+      "components": [
+        "block.carousel"
+      ]
     }
   }
 }

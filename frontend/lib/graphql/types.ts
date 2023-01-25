@@ -47,7 +47,7 @@ type ___PickSkipArrays<T, Path extends [...string[]]> = Path extends [
  * // will be { name: string }
  * type User = DeepExtractTypeSkipArrays<QueryResult, ["allPosts", "users"]>
  */
-export type DeepExtractTypeSkipArrays<Source, Path extends [...string[]]> = Id<
+export type ExtractType<Source, Path extends [...string[]]> = Id<
   NonNullSkipArray<___PickSkipArrays<NonNullable<Source>, Path>>
 >;
 
@@ -69,6 +69,7 @@ type ___Pick<T, Path extends [...(string | number)[]]> = Path extends [
  * // will be { title: string }
  * type Post = DeepExtractType<QueryResult, ["user", "firstPost"]>;
  */
-export type DeepExtractType<Source, Path extends [...(string | number)[]]> = Id<
-  NonNullable<___Pick<NonNullable<Source>, Path>>
->;
+export type ExtractTypeWithArrays<
+  Source,
+  Path extends [...(string | number)[]]
+> = Id<NonNullable<___Pick<NonNullable<Source>, Path>>>;

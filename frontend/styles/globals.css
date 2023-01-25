@@ -1,3 +1,15 @@
 @import "tailwindcss/base.css";
 @import "tailwindcss/components.css";
 @import "tailwindcss/utilities.css";
+
+form {
+    margin-block-end: 0;
+}
+
+/*
+ * Remove the X from search fields which usually allows you to clear the field. This is a non-standard feature and
+ * unsupported by Firefox.
+ */
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
