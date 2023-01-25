@@ -1,3 +1,11 @@
-export default function Page({ params }: any): JSX.Element {
-  return <div className="mt-16 mx-8 container">sub page: {JSON.stringify(params)}</div>;
+import { fetchPageData } from "#/lib/graphql/page.gql";
+import { Page } from "#/components/page/Page";
+import { NextPageProps } from "#/lib/types";
+
+export default async function SubPage(props: NextPageProps): Promise<JSX.Element | null> {
+  const pageData = await fetchPageData(props.params.slug);
+  if (pageData?.attributes?.contents) {
+    return <Page contents={pageData.attributes.contents} />;
+  }
+  return null;
 }
