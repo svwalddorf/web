@@ -206,7 +206,6 @@ export type ComponentSharedLinkLists = {
   id: Scalars['ID'];
   links?: Maybe<Array<Maybe<ComponentSharedLink>>>;
   pageLinks?: Maybe<PageRelationResponseCollection>;
-  pageTags?: Maybe<TagRelationResponseCollection>;
   title?: Maybe<Scalars['String']>;
   titleUrl?: Maybe<Scalars['String']>;
 };
@@ -226,21 +225,12 @@ export type ComponentSharedLinkListsPageLinksArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-
-export type ComponentSharedLinkListsPageTagsArgs = {
-  filters?: InputMaybe<TagFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  publicationState?: InputMaybe<PublicationState>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-};
-
 export type ComponentSharedLinkListsFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSharedLinkListsFiltersInput>>>;
   links?: InputMaybe<ComponentSharedLinkFiltersInput>;
   not?: InputMaybe<ComponentSharedLinkListsFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<ComponentSharedLinkListsFiltersInput>>>;
   pageLinks?: InputMaybe<PageFiltersInput>;
-  pageTags?: InputMaybe<TagFiltersInput>;
   title?: InputMaybe<StringFilterInput>;
   titleUrl?: InputMaybe<StringFilterInput>;
 };
@@ -249,7 +239,6 @@ export type ComponentSharedLinkListsInput = {
   id?: InputMaybe<Scalars['ID']>;
   links?: InputMaybe<Array<InputMaybe<ComponentSharedLinkInput>>>;
   pageLinks?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  pageTags?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
   title?: InputMaybe<Scalars['String']>;
   titleUrl?: InputMaybe<Scalars['String']>;
 };
@@ -1646,4 +1635,4 @@ export type LinkFragmentFragment = { __typename?: 'ComponentSharedLink', id: str
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'HomepageEntityResponse', data?: { __typename?: 'HomepageEntity', id?: string | null, attributes?: { __typename?: 'Homepage', meta?: { __typename?: 'ComponentSharedMeta', id: string, title: string, description?: string | null, favicon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, name: string } | null } | null } | null } | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, footer?: { __typename?: 'ComponentGlobalFooter', id: string, labelLeft?: string | null, labelRight?: string | null, linkLists?: Array<{ __typename?: 'ComponentSharedLinkLists', id: string, title?: string | null, titleUrl?: string | null, pageTags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, pageLinks?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null, links?: Array<{ __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null } | null> | null } | null, socialMedia?: Array<{ __typename?: 'ComponentSharedSocialMedia', id: string, name?: string | null, url?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, contact?: { __typename?: 'ComponentGlobalContact', id: string, name?: string | null, street?: string | null, postalCode?: string | null, city?: string | null, telephone?: string | null, telefax?: string | null, email?: string | null } | null, subPages?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null } | null } | null } | null };
+export type HomepageQuery = { __typename?: 'Query', homepage?: { __typename?: 'HomepageEntityResponse', data?: { __typename?: 'HomepageEntity', id?: string | null, attributes?: { __typename?: 'Homepage', meta?: { __typename?: 'ComponentSharedMeta', id: string, title: string, description?: string | null, favicon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, name: string } | null } | null } | null } | null, logo?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string } | null } | null } | null, footer?: { __typename?: 'ComponentGlobalFooter', id: string, labelLeft?: string | null, labelRight?: string | null, linkLists?: Array<{ __typename?: 'ComponentSharedLinkLists', id: string, title?: string | null, titleUrl?: string | null, pageLinks?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null, links?: Array<{ __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null } | null> | null } | null, socialMedia?: Array<{ __typename?: 'ComponentSharedSocialMedia', id: string, name?: string | null, url?: string | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null } | null> | null, contact?: { __typename?: 'ComponentGlobalContact', id: string, name?: string | null, street?: string | null, postalCode?: string | null, city?: string | null, telephone?: string | null, telefax?: string | null, email?: string | null } | null, subPages?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null } | null } | null } | null };

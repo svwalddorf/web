@@ -17,11 +17,6 @@
     "titleUrl": {
       "type": "string"
     },
-    "pageTags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "pageLinks": {
       "type": "relation",
       "relation": "oneToMany",

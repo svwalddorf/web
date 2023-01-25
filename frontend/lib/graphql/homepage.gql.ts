@@ -40,14 +40,6 @@ export const HOMEPAGE = gql`
               id
               title
               titleUrl
-              pageTags {
-                data {
-                  id
-                  attributes {
-                    name
-                  }
-                }
-              }
               pageLinks {
                 data {
                   id
