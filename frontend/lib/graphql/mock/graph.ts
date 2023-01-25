@@ -1,18 +1,18 @@
-import { Enum_Componentsharedlink_Target, GlobalQuery } from "../generated";
+import { Enum_Componentsharedlink_Target, HomepageQuery } from "../generated";
 import { createComponentSharedLink } from "./link";
 import { createComponentSharedSocialMedia } from "./socialmedia";
 
-export type Graph = GlobalQuery;
+export type Graph = HomepageQuery;
 
 export function createGraph(): Graph {
   return {
-    global: {
-      __typename: "GlobalEntityResponse",
+    homepage: {
+      __typename: "HomepageEntityResponse",
       data: {
-        __typename: "GlobalEntity",
-        id: "global-entity-id",
+        __typename: "HomepageEntity",
+        id: "homepage-entity-id",
         attributes: {
-          __typename: "Global",
+          __typename: "Homepage",
           contact: {
             __typename: "ComponentGlobalContact",
             id: "component-global-contact-id",
@@ -24,38 +24,7 @@ export function createGraph(): Graph {
             telefax: "+65 4321 234568",
             email: "info@svwalddorf.de",
           },
-          header: {
-            __typename: "ComponentGlobalHeader",
-            id: "component-global-header-id",
-            pageLinks: [
-              createComponentSharedLink({
-                id: "pagelink-id-1",
-                href: "/verein",
-                text: "Verein",
-              }),
-              createComponentSharedLink({
-                id: "pagelink-id-2",
-                href: "/fussball",
-                text: "Fußball",
-              }),
-              createComponentSharedLink({
-                id: "pagelink-id-3",
-                href: "/badminton",
-                text: "Badminton",
-              }),
-              createComponentSharedLink({
-                id: "pagelink-id-4",
-                href: "/fitness-und-gesundheitssport",
-                text: "Fitness & Gesundheitssport",
-              }),
-              createComponentSharedLink({
-                id: "pagelink-id-5",
-                href: "/rehasport",
-                text: "Rehasport",
-              }),
-            ],
-          },
-          socialMedias: [
+          socialMedia: [
             createComponentSharedSocialMedia({
               id: "component-shared-social-media-id-1",
               name: "Facebook",
