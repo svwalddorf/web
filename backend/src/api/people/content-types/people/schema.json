@@ -22,7 +22,7 @@
     },
     "picture": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "required": false,
       "allowedTypes": [
         "images"
@@ -38,6 +38,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tag.tag"
+    },
+    "telephone": {
+      "type": "string"
     }
   }
 }

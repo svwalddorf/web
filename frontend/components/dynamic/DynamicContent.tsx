@@ -7,7 +7,7 @@ import {
   PageMainContentsDynamicZone,
   PageRightContentsDynamicZone,
 } from "#/lib/graphql/generated";
-import { TaggedPerson } from "#/components/person/TaggedPerson";
+import { TaggedPersons } from "#/components/person/TaggedPersons";
 
 type Props = {
   component:
@@ -34,7 +34,7 @@ export function DynamicContent({ component }: Props): JSX.Element | null {
     }
     case "ComponentBlockTaggedPersons": {
       /* @ts-expect-error Server Component */
-      return <TaggedPerson tagId={component.tag?.data?.id ?? null} />;
+      return <TaggedPersons tagId={component.tag?.data?.id ?? null} />;
     }
     case "Error":
       return <div>error in {JSON.stringify(component)}</div>;

@@ -943,17 +943,11 @@ export type People = {
   email?: Maybe<Scalars['String']>;
   firstname: Scalars['String'];
   lastname: Scalars['String'];
-  picture?: Maybe<UploadFileRelationResponseCollection>;
+  picture?: Maybe<UploadFileEntityResponse>;
   publishedAt?: Maybe<Scalars['DateTime']>;
   tags?: Maybe<TagRelationResponseCollection>;
+  telephone?: Maybe<Scalars['String']>;
   updatedAt?: Maybe<Scalars['DateTime']>;
-};
-
-
-export type PeoplePictureArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
 
@@ -993,6 +987,7 @@ export type PeopleFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<PeopleFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
   tags?: InputMaybe<TagFiltersInput>;
+  telephone?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -1001,9 +996,10 @@ export type PeopleInput = {
   email?: InputMaybe<Scalars['String']>;
   firstname?: InputMaybe<Scalars['String']>;
   lastname?: InputMaybe<Scalars['String']>;
-  picture?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  picture?: InputMaybe<Scalars['ID']>;
   publishedAt?: InputMaybe<Scalars['DateTime']>;
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  telephone?: InputMaybe<Scalars['String']>;
 };
 
 export enum PublicationState {
@@ -1666,7 +1662,7 @@ export type TaggedPeopleQueryVariables = Exact<{
 }>;
 
 
-export type TaggedPeopleQuery = { __typename?: 'Query', peoples?: { __typename?: 'PeopleEntityResponseCollection', data: Array<{ __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null } | null }> } | null };
+export type TaggedPeopleQuery = { __typename?: 'Query', peoples?: { __typename?: 'PeopleEntityResponseCollection', data: Array<{ __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, telephone?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } | null } | null }> } | null };
 
 export type PromotionArticlesQueryVariables = Exact<{
   limit: Scalars['Int'];
@@ -1677,7 +1673,7 @@ export type PromotionArticlesQuery = { __typename?: 'Query', articles?: { __type
 
 export type LinkFragmentFragment = { __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null };
 
-export type PeopleFragment = { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null };
+export type PeopleFragment = { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, telephone?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } | null };
 
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1689,4 +1685,4 @@ export type PageDataQueryVariables = Exact<{
 }>;
 
 
-export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, headerContents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockSubPageNavigation', id: string, flat: boolean } | { __typename: 'Error' } | null> | null, mainContents?: Array<{ __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, leftContents?: Array<{ __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, rightContents?: Array<{ __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, subPages?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null } | null }> } | null };
+export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, headerContents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockSubPageNavigation', id: string, flat: boolean } | { __typename: 'Error' } | null> | null, mainContents?: Array<{ __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, telephone?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, leftContents?: Array<{ __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, telephone?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, rightContents?: Array<{ __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, telephone?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null } | null } | null } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, subPages?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null } | null }> } | null };

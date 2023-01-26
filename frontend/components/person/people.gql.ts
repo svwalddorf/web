@@ -1,5 +1,7 @@
 import { gql } from "@apollo/client";
 import { PEOPLE_FRAGMENT } from "#/lib/graphql/fragments.gql";
+import { ExtractType } from "#/lib/graphql/types";
+import { TaggedPeopleQuery } from "#/lib/graphql/generated";
 
 export const TAGGED_PEOPLE = gql`
   ${PEOPLE_FRAGMENT}
@@ -14,3 +16,6 @@ export const TAGGED_PEOPLE = gql`
     }
   }
 `;
+
+export type PeopleData = ExtractType<TaggedPeopleQuery, ["peoples", "data"]>;
+export type Person = ExtractType<PeopleData, ["attributes"]>;

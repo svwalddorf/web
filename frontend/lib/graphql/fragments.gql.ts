@@ -25,11 +25,22 @@ export const PEOPLE_FRAGMENT = gql`
     lastname
     description
     email
+    telephone
     tags {
       data {
         id
         attributes {
           name
+        }
+      }
+    }
+    picture {
+      data {
+        id
+        attributes {
+          url
+          width
+          height
         }
       }
     }

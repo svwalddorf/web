@@ -1,11 +1,12 @@
 import client from "#/lib/graphql/client";
 import { TAGGED_PEOPLE } from "#/components/person/people.gql";
 import { TaggedPeopleQuery, TaggedPeopleQueryVariables } from "#/lib/graphql/generated";
+import { PersonCard } from "#/components/person/PersonCard";
 
 type Props = {
   tagId: string | null;
 };
-export async function TaggedPerson({ tagId }: Props): Promise<JSX.Element | null> {
+export async function TaggedPersons({ tagId }: Props): Promise<JSX.Element | null> {
   if (!tagId) {
     return null;
   }
@@ -16,8 +17,13 @@ export async function TaggedPerson({ tagId }: Props): Promise<JSX.Element | null
   });
 
   return (
-    <p>
-      tagId: {tagId}, data: {JSON.stringify(data.peoples?.data)}
-    </p>
+    <>
+      {data.peoples?.data.map((person) => {
+        if (person.attributes) {
+          return <PersonCard person={person.attributes} />;
+        }
+        return null;
+      })}
+    </>
   );
 }
