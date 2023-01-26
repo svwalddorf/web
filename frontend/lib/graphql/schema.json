@@ -6764,22 +6764,6 @@
         "description": null,
         "fields": [
           {
-            "name": "contents",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "LIST",
-              "name": null,
-              "ofType": {
-                "kind": "UNION",
-                "name": "PageContentsDynamicZone",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "createdAt",
             "description": null,
             "args": [],
@@ -6792,23 +6776,7 @@
             "deprecationReason": null
           },
           {
-            "name": "inContainer",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "leftContent",
+            "name": "headerContents",
             "description": null,
             "args": [],
             "type": {
@@ -6816,7 +6784,39 @@
               "name": null,
               "ofType": {
                 "kind": "UNION",
-                "name": "PageLeftContentDynamicZone",
+                "name": "PageHeaderContentsDynamicZone",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "leftContents",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "UNION",
+                "name": "PageLeftContentsDynamicZone",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mainContents",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "UNION",
+                "name": "PageMainContentsDynamicZone",
                 "ofType": null
               }
             },
@@ -6848,7 +6848,7 @@
             "deprecationReason": null
           },
           {
-            "name": "rightContent",
+            "name": "rightContents",
             "description": null,
             "args": [],
             "type": {
@@ -6856,7 +6856,7 @@
               "name": null,
               "ofType": {
                 "kind": "UNION",
-                "name": "PageRightContentDynamicZone",
+                "name": "PageRightContentsDynamicZone",
                 "ofType": null
               }
             },
@@ -7044,57 +7044,6 @@
         "possibleTypes": null
       },
       {
-        "kind": "UNION",
-        "name": "PageContentsDynamicZone",
-        "description": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": [
-          {
-            "kind": "OBJECT",
-            "name": "ComponentBlockCarousel",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "ComponentBlockPersons",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "ComponentBlockRichText",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "ComponentBlockTaggedPersons",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "ComponentSharedSpacing",
-            "ofType": null
-          },
-          {
-            "kind": "OBJECT",
-            "name": "Error",
-            "ofType": null
-          }
-        ]
-      },
-      {
-        "kind": "SCALAR",
-        "name": "PageContentsDynamicZoneInput",
-        "description": null,
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
         "kind": "OBJECT",
         "name": "PageEntity",
         "description": null,
@@ -7250,18 +7199,6 @@
             "deprecationReason": null
           },
           {
-            "name": "inContainer",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "BooleanFilterInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "not",
             "description": null,
             "type": {
@@ -7379,13 +7316,49 @@
         "possibleTypes": null
       },
       {
+        "kind": "UNION",
+        "name": "PageHeaderContentsDynamicZone",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "ComponentBlockCarousel",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "ComponentBlockSubPageNavigation",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Error",
+            "ofType": null
+          }
+        ]
+      },
+      {
+        "kind": "SCALAR",
+        "name": "PageHeaderContentsDynamicZoneInput",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "INPUT_OBJECT",
         "name": "PageInput",
         "description": null,
         "fields": null,
         "inputFields": [
           {
-            "name": "contents",
+            "name": "headerContents",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -7395,7 +7368,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "PageContentsDynamicZoneInput",
+                  "name": "PageHeaderContentsDynamicZoneInput",
                   "ofType": null
                 }
               }
@@ -7405,19 +7378,7 @@
             "deprecationReason": null
           },
           {
-            "name": "inContainer",
-            "description": null,
-            "type": {
-              "kind": "SCALAR",
-              "name": "Boolean",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "leftContent",
+            "name": "leftContents",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -7427,7 +7388,27 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "PageLeftContentDynamicZoneInput",
+                  "name": "PageLeftContentsDynamicZoneInput",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mainContents",
+            "description": null,
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "PageMainContentsDynamicZoneInput",
                   "ofType": null
                 }
               }
@@ -7461,7 +7442,7 @@
             "deprecationReason": null
           },
           {
-            "name": "rightContent",
+            "name": "rightContents",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -7471,7 +7452,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "PageRightContentDynamicZoneInput",
+                  "name": "PageRightContentsDynamicZoneInput",
                   "ofType": null
                 }
               }
@@ -7543,18 +7524,13 @@
       },
       {
         "kind": "UNION",
-        "name": "PageLeftContentDynamicZone",
+        "name": "PageLeftContentsDynamicZone",
         "description": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": [
-          {
-            "kind": "OBJECT",
-            "name": "ComponentBlockCarousel",
-            "ofType": null
-          },
           {
             "kind": "OBJECT",
             "name": "ComponentBlockPersons",
@@ -7584,7 +7560,53 @@
       },
       {
         "kind": "SCALAR",
-        "name": "PageLeftContentDynamicZoneInput",
+        "name": "PageLeftContentsDynamicZoneInput",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "UNION",
+        "name": "PageMainContentsDynamicZone",
+        "description": null,
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": [
+          {
+            "kind": "OBJECT",
+            "name": "ComponentBlockPersons",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "ComponentBlockRichText",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "ComponentBlockTaggedPersons",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "ComponentSharedSpacing",
+            "ofType": null
+          },
+          {
+            "kind": "OBJECT",
+            "name": "Error",
+            "ofType": null
+          }
+        ]
+      },
+      {
+        "kind": "SCALAR",
+        "name": "PageMainContentsDynamicZoneInput",
         "description": null,
         "fields": null,
         "inputFields": null,
@@ -7629,18 +7651,13 @@
       },
       {
         "kind": "UNION",
-        "name": "PageRightContentDynamicZone",
+        "name": "PageRightContentsDynamicZone",
         "description": null,
         "fields": null,
         "inputFields": null,
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": [
-          {
-            "kind": "OBJECT",
-            "name": "ComponentBlockCarousel",
-            "ofType": null
-          },
           {
             "kind": "OBJECT",
             "name": "ComponentBlockPersons",
@@ -7670,7 +7687,7 @@
       },
       {
         "kind": "SCALAR",
-        "name": "PageRightContentDynamicZoneInput",
+        "name": "PageRightContentsDynamicZoneInput",
         "description": null,
         "fields": null,
         "inputFields": null,

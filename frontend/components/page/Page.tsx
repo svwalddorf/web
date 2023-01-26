@@ -1,20 +1,12 @@
-import {
-  DynamicContentData,
-  LeftDynamicContentData,
-  RightDynamicContentData,
-  SubPageData,
-} from "#/lib/graphql/page.gql";
+import { PageData } from "#/lib/graphql/page.gql";
 import { DynamicContent } from "#/components/dynamic/DynamicContent";
 
 type Props = {
-  subPages?: SubPageData[] | null;
-  inContainer?: boolean | null;
-  contents: (DynamicContentData | null)[];
-  leftContent: (LeftDynamicContentData | null)[];
-  rightContent: (RightDynamicContentData | null)[];
+  data: PageData;
 };
 
-export function Page({ subPages, inContainer, leftContent, contents, rightContent }: Props): JSX.Element {
+export function Page(props: Props): JSX.Element {
+  const { mainContents, leftContents, rightContents, headerContents } = props.data;
   return (
     <>
       {/*showSubPageNavigation && (
@@ -28,30 +20,40 @@ export function Page({ subPages, inContainer, leftContent, contents, rightConten
           </div>
         </div>
       )*/}
-      <div className={`${inContainer ? "container " : ""}flex flex-row place-content-between`}>
-        <div className="">
-          {leftContent?.map((content) => {
+      <div>
+        <div className="flex flex-row">
+          {headerContents?.map((content) => {
             if (!content || content.__typename === "Error") {
               return null;
             }
-            return <DynamicContent key={content.id} block={content} />;
+            return <DynamicContent key={content.id} component={content} />;
           })}
         </div>
-        <main className="">
-          {contents?.map((content) => {
-            if (!content || content.__typename === "Error") {
-              return null;
-            }
-            return <DynamicContent key={content.id} block={content} />;
-          })}
-        </main>
-        <div className="">
-          {rightContent?.map((content) => {
-            if (!content || content.__typename === "Error") {
-              return null;
-            }
-            return <DynamicContent key={content.id} block={content} />;
-          })}
+        <div className="container flex flex-row place-content-between">
+          <div className="">
+            {leftContents?.map((content) => {
+              if (!content || content.__typename === "Error") {
+                return null;
+              }
+              return <DynamicContent key={content.id} component={content} />;
+            })}
+          </div>
+          <main className="">
+            {mainContents?.map((content) => {
+              if (!content || content.__typename === "Error") {
+                return null;
+              }
+              return <DynamicContent key={content.id} component={content} />;
+            })}
+          </main>
+          <div className="">
+            {rightContents?.map((content) => {
+              if (!content || content.__typename === "Error") {
+                return null;
+              }
+              return <DynamicContent key={content.id} component={content} />;
+            })}
+          </div>
         </div>
       </div>
     </>

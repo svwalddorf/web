@@ -20,7 +20,7 @@ export const LINK_FRAGMENT = gql`
 `;
 
 export const PEOPLE_FRAGMENT = gql`
-  fragment Person on People {
+  fragment People on People {
     firstname
     lastname
     description

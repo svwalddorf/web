@@ -38,40 +38,39 @@
       "relation": "oneToMany",
       "target": "api::tag.tag"
     },
-    "contents": {
+    "mainContents": {
       "type": "dynamiczone",
       "components": [
-        "block.carousel",
         "block.rich-text",
         "shared.spacing",
         "block.tagged-persons",
         "block.persons"
       ]
     },
-    "leftContent": {
+    "leftContents": {
       "type": "dynamiczone",
       "components": [
-        "block.carousel",
         "block.rich-text",
         "shared.spacing",
         "block.persons",
         "block.tagged-persons"
       ]
     },
-    "rightContent": {
+    "rightContents": {
       "type": "dynamiczone",
       "components": [
-        "block.carousel",
         "block.rich-text",
         "shared.spacing",
         "block.persons",
         "block.tagged-persons"
       ]
     },
-    "inContainer": {
-      "type": "boolean",
-      "default": true,
-      "required": true
+    "headerContents": {
+      "type": "dynamiczone",
+      "components": [
+        "block.sub-page-navigation",
+        "block.carousel"
+      ]
     }
   }
 }

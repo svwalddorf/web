@@ -10,7 +10,7 @@ export default async function Page(props: NextPageProps): Promise<JSX.Element> {
         if (!block || block.__typename === "Error") {
           return null;
         }
-        return <DynamicContent key={block.id} block={block} />;
+        return <DynamicContent key={block.id} component={block} />;
       })}
     </div>
   );

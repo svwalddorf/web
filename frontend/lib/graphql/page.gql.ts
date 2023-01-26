@@ -13,13 +13,19 @@ export const PAGE_DATA = gql`
         attributes {
           title
           slug
-          inContainer
-          contents {
+          headerContents {
             __typename
+            ... on ComponentBlockSubPageNavigation {
+              id
+              flat
+            }
             ... on ComponentBlockCarousel {
               id
               maxArticles
             }
+          }
+          mainContents {
+            __typename
             ... on ComponentBlockRichText {
               id
               content
@@ -35,7 +41,7 @@ export const PAGE_DATA = gql`
                 data {
                   id
                   attributes {
-                    ...Person
+                    ...People
                   }
                 }
               }
@@ -49,12 +55,8 @@ export const PAGE_DATA = gql`
               }
             }
           }
-          leftContent {
+          leftContents {
             __typename
-            ... on ComponentBlockCarousel {
-              id
-              maxArticles
-            }
             ... on ComponentBlockRichText {
               id
               content
@@ -70,7 +72,7 @@ export const PAGE_DATA = gql`
                 data {
                   id
                   attributes {
-                    ...Person
+                    ...People
                   }
                 }
               }
@@ -84,12 +86,8 @@ export const PAGE_DATA = gql`
               }
             }
           }
-          rightContent {
+          rightContents {
             __typename
-            ... on ComponentBlockCarousel {
-              id
-              maxArticles
-            }
             ... on ComponentBlockRichText {
               id
               content
@@ -105,7 +103,7 @@ export const PAGE_DATA = gql`
                 data {
                   id
                   attributes {
-                    ...Person
+                    ...People
                   }
                 }
               }
@@ -134,13 +132,10 @@ export const PAGE_DATA = gql`
   }
 `;
 
-export type PageData = ExtractType<PageDataQuery, ["pages", "data"]>;
-export type DynamicContentData = ExtractType<PageData, ["attributes", "contents"]>;
-export type LeftDynamicContentData = ExtractType<PageData, ["attributes", "leftContent"]>;
-export type RightDynamicContentData = ExtractType<PageData, ["attributes", "rightContent"]>;
-export type SubPageData = ExtractType<PageData, ["attributes", "subPages", "data"]>;
+export type PageEntityData = ExtractType<PageDataQuery, ["pages", "data"]>;
+export type PageData = ExtractType<PageEntityData, ["attributes"]>;
 
-export async function fetchPageData(slug: string): Promise<PageData | undefined> {
+export async function fetchPageData(slug: string): Promise<PageEntityData | undefined> {
   const { data } = await client.query<PageDataQuery>({
     query: PAGE_DATA,
     variables: { slug },
