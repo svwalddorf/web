@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getFullAssetUrl } from "#/lib/asset";
 import CallToActionButton from "#/components/button/CallToActionButton";
 import { FaFileSignature, FaSearch } from "react-icons/fa";
+import { MainNavigation } from "#/components/header/MainNavigation";
 
 type MenuProps = {
   menuItems: Page[];
@@ -48,18 +49,7 @@ function LargeScreenNavigation({ menuItems, logo, socialMedia }: MenuProps): JSX
                 </Link>
               )}
             </div>
-            <nav className="text-white whitespace-nowrap">
-              {menuItems?.map((menuItem, index, array) => (
-                <>
-                  <Link
-                    href={menuItem.slug}
-                    className={`py-3 px-3 ${array.length - 1 !== index ? "border-r border-neutral-300" : ""}`}
-                  >
-                    {menuItem.title}
-                  </Link>
-                </>
-              ))}
-            </nav>
+            <MainNavigation menuItems={menuItems} />
           </div>
         </div>
       </div>

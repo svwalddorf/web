@@ -18,31 +18,3 @@ export const LINK_FRAGMENT = gql`
     isExternal
   }
 `;
-
-export const PEOPLE_FRAGMENT = gql`
-  fragment People on People {
-    firstname
-    lastname
-    description
-    email
-    telephone
-    tags {
-      data {
-        id
-        attributes {
-          name
-        }
-      }
-    }
-    picture {
-      data {
-        id
-        attributes {
-          url
-          width
-          height
-        }
-      }
-    }
-  }
-`;

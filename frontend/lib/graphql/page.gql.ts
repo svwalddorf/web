@@ -2,10 +2,8 @@ import { gql } from "@apollo/client";
 import { PageDataQuery } from "#/lib/graphql/generated";
 import { ExtractType } from "#/lib/graphql/types";
 import client from "#/lib/graphql/client";
-import { PEOPLE_FRAGMENT } from "#/lib/graphql/fragments.gql";
 
 export const PAGE_DATA = gql`
-  ${PEOPLE_FRAGMENT}
   query PageData($slug: String!) {
     pages(filters: { slug: { eq: $slug } }) {
       data {
@@ -41,7 +39,34 @@ export const PAGE_DATA = gql`
                 data {
                   id
                   attributes {
-                    ...People
+                    firstname
+                    lastname
+                    description
+                    email
+                    telephone
+                    tags {
+                      data {
+                        id
+                        attributes {
+                          name
+                        }
+                      }
+                    }
+                    picture {
+                      data {
+                        id
+                        attributes {
+                          url
+                          width
+                          height
+                          hash
+                          mime
+                          name
+                          provider
+                          size
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -72,7 +97,34 @@ export const PAGE_DATA = gql`
                 data {
                   id
                   attributes {
-                    ...People
+                    firstname
+                    lastname
+                    description
+                    email
+                    telephone
+                    tags {
+                      data {
+                        id
+                        attributes {
+                          name
+                        }
+                      }
+                    }
+                    picture {
+                      data {
+                        id
+                        attributes {
+                          url
+                          width
+                          height
+                          hash
+                          mime
+                          name
+                          provider
+                          size
+                        }
+                      }
+                    }
                   }
                 }
               }
@@ -103,7 +155,34 @@ export const PAGE_DATA = gql`
                 data {
                   id
                   attributes {
-                    ...People
+                    firstname
+                    lastname
+                    description
+                    email
+                    telephone
+                    tags {
+                      data {
+                        id
+                        attributes {
+                          name
+                        }
+                      }
+                    }
+                    picture {
+                      data {
+                        id
+                        attributes {
+                          url
+                          width
+                          height
+                          hash
+                          mime
+                          name
+                          provider
+                          size
+                        }
+                      }
+                    }
                   }
                 }
               }
