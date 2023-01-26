@@ -1,5 +1,5 @@
-import { ContactData, FooterData, FooterLinkListData } from "#/lib/graphql/homepage.gql";
-import Link from "next/link";
+import { ContactData, FooterData } from "#/lib/graphql/homepage.gql";
+import { LinkList } from "#/components/linklist/LinkList";
 
 export default function Footer({
   labelLeft,
@@ -17,8 +17,8 @@ export default function Footer({
           {contact && (
             <div key="contact">
               <ul className="list-none">
-                <li className="font-bold">
-                  <h4>{contact.name}</h4>
+                <li>
+                  <span className="font-bold text-lg">{contact.name}</span>
                 </li>
                 <li>{contact.street}</li>
                 <li>
@@ -37,39 +37,5 @@ export default function Footer({
         <div>{labelRight}</div>
       </div>
     </footer>
-  );
-}
-
-type LinkListProps = { linkList: FooterLinkListData };
-
-function LinkList({ linkList }: LinkListProps): JSX.Element {
-  return (
-    <div key={linkList.id}>
-      <h4 className="font-bold">
-        {linkList.titleUrl ? <Link href={linkList.titleUrl}>{linkList.title}</Link> : linkList.title}
-      </h4>
-      <ul className="list-none">
-        {linkList.pageLinks?.data.map((pageLink) => {
-          if (pageLink && pageLink.attributes?.slug) {
-            return (
-              <li key={pageLink.id}>
-                <Link href={pageLink.attributes?.slug}>{pageLink.attributes?.title}</Link>
-              </li>
-            );
-          }
-        })}
-        {linkList.links?.map((link) => {
-          if (link) {
-            return (
-              <li key={link.id}>
-                <Link href={link.href} target={`_${link.target ?? "self"}`}>
-                  {link.text ?? link.href}
-                </Link>
-              </li>
-            );
-          }
-        })}
-      </ul>
-    </div>
   );
 }
