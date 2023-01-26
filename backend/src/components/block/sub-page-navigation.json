@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_block_sub_page_navigations",
+  "info": {
+    "displayName": "SubPageNavigation"
+  },
+  "options": {},
+  "attributes": {
+    "flat": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

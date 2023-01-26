@@ -7,6 +7,7 @@ export default async function SubPage(props: NextPageProps): Promise<JSX.Element
   if (pageData?.attributes) {
     return (
       <Page
+        subPages={pageData.attributes.subPages?.data}
         inContainer={pageData.attributes.inContainer}
         contents={pageData.attributes.contents ?? []}
         leftContent={pageData.attributes.leftContent ?? []}

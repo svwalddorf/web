@@ -18,3 +18,20 @@ export const LINK_FRAGMENT = gql`
     isExternal
   }
 `;
+
+export const PEOPLE_FRAGMENT = gql`
+  fragment Person on People {
+    firstname
+    lastname
+    description
+    email
+    tags {
+      data {
+        id
+        attributes {
+          name
+        }
+      }
+    }
+  }
+`;

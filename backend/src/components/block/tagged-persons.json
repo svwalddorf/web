@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_block_tagged_persons",
+  "info": {
+    "displayName": "TaggedPersons"
+  },
+  "options": {},
+  "attributes": {
+    "tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tag.tag"
+    }
+  }
+}

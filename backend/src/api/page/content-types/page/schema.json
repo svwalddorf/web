@@ -43,7 +43,9 @@
       "components": [
         "block.carousel",
         "block.rich-text",
-        "shared.spacing"
+        "shared.spacing",
+        "block.tagged-persons",
+        "block.persons"
       ]
     },
     "leftContent": {
@@ -51,7 +53,9 @@
       "components": [
         "block.carousel",
         "block.rich-text",
-        "shared.spacing"
+        "shared.spacing",
+        "block.persons",
+        "block.tagged-persons"
       ]
     },
     "rightContent": {
@@ -59,7 +63,9 @@
       "components": [
         "block.carousel",
         "block.rich-text",
-        "shared.spacing"
+        "shared.spacing",
+        "block.persons",
+        "block.tagged-persons"
       ]
     },
     "inContainer": {

@@ -107,10 +107,28 @@ export type ComponentBlockCarousel = {
   maxArticles?: Maybe<Scalars['Int']>;
 };
 
+export type ComponentBlockPersons = {
+  __typename?: 'ComponentBlockPersons';
+  id: Scalars['ID'];
+  person?: Maybe<PeopleEntityResponse>;
+};
+
 export type ComponentBlockRichText = {
   __typename?: 'ComponentBlockRichText';
   content?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
+};
+
+export type ComponentBlockSubPageNavigation = {
+  __typename?: 'ComponentBlockSubPageNavigation';
+  flat: Scalars['Boolean'];
+  id: Scalars['ID'];
+};
+
+export type ComponentBlockTaggedPersons = {
+  __typename?: 'ComponentBlockTaggedPersons';
+  id: Scalars['ID'];
+  tag?: Maybe<TagEntityResponse>;
 };
 
 export type ComponentGlobalContact = {
@@ -386,7 +404,7 @@ export type FloatFilterInput = {
   startsWith?: InputMaybe<Scalars['Float']>;
 };
 
-export type GenericMorph = Article | ComponentBlockCarousel | ComponentBlockRichText | ComponentGlobalContact | ComponentGlobalFooter | ComponentGlobalHeader | ComponentSharedColumn | ComponentSharedLink | ComponentSharedLinkLists | ComponentSharedMeta | ComponentSharedSocialMedia | ComponentSharedSpacing | Homepage | I18NLocale | Page | People | Sponsor | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = Article | ComponentBlockCarousel | ComponentBlockPersons | ComponentBlockRichText | ComponentBlockSubPageNavigation | ComponentBlockTaggedPersons | ComponentGlobalContact | ComponentGlobalFooter | ComponentGlobalHeader | ComponentSharedColumn | ComponentSharedLink | ComponentSharedLinkLists | ComponentSharedMeta | ComponentSharedSocialMedia | ComponentSharedSpacing | Homepage | I18NLocale | Page | People | Sponsor | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -844,7 +862,7 @@ export type PageTagsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
 };
 
-export type PageContentsDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | ComponentSharedSpacing | Error;
+export type PageContentsDynamicZone = ComponentBlockCarousel | ComponentBlockPersons | ComponentBlockRichText | ComponentBlockTaggedPersons | ComponentSharedSpacing | Error;
 
 export type PageEntity = {
   __typename?: 'PageEntity';
@@ -892,14 +910,14 @@ export type PageInput = {
   title?: InputMaybe<Scalars['String']>;
 };
 
-export type PageLeftContentDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | ComponentSharedSpacing | Error;
+export type PageLeftContentDynamicZone = ComponentBlockCarousel | ComponentBlockPersons | ComponentBlockRichText | ComponentBlockTaggedPersons | ComponentSharedSpacing | Error;
 
 export type PageRelationResponseCollection = {
   __typename?: 'PageRelationResponseCollection';
   data: Array<PageEntity>;
 };
 
-export type PageRightContentDynamicZone = ComponentBlockCarousel | ComponentBlockRichText | ComponentSharedSpacing | Error;
+export type PageRightContentDynamicZone = ComponentBlockCarousel | ComponentBlockPersons | ComponentBlockRichText | ComponentBlockTaggedPersons | ComponentSharedSpacing | Error;
 
 export type Pagination = {
   __typename?: 'Pagination';
@@ -1650,6 +1668,8 @@ export type PromotionArticlesQuery = { __typename?: 'Query', articles?: { __type
 
 export type LinkFragmentFragment = { __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null };
 
+export type PersonFragment = { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null };
+
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1660,4 +1680,4 @@ export type PageDataQueryVariables = Exact<{
 }>;
 
 
-export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, inContainer: boolean, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, leftContent?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, rightContent?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null } | null }> } | null };
+export type PageDataQuery = { __typename?: 'Query', pages?: { __typename?: 'PageEntityResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string, inContainer: boolean, contents?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, leftContent?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, rightContent?: Array<{ __typename: 'ComponentBlockCarousel', id: string, maxArticles?: number | null } | { __typename: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null } | null } | null } | null } | { __typename: 'ComponentBlockRichText', id: string, content?: string | null } | { __typename: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null } | { __typename: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null } | { __typename: 'Error' } | null> | null, subPages?: { __typename?: 'PageRelationResponseCollection', data: Array<{ __typename?: 'PageEntity', id?: string | null, attributes?: { __typename?: 'Page', title: string, slug: string } | null }> } | null } | null }> } | null };
