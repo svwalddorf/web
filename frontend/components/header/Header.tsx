@@ -29,13 +29,13 @@ function LargeScreenNavigation({ menuItems, logo, socialMedia }: MenuProps): JSX
     <header className="hidden md:block">
       <div className="flex flex-col">
         <div className="flex flex-row flex-1">
-          <div className="container px-4">
+          <div className="container pl-4">
             <AccessHeader socialMedia={socialMedia} />
           </div>
         </div>
         <div className="place-content-between bg-svw-blue-default mt-1">
-          <div className="container px-4 flex flex-row place-content-between items-center">
-            <div className="overflow-visible h-16 z-50">
+          <div className="container pl-4 flex flex-row place-content-between items-center">
+            <div className="overflow-visible h-16 z-50 md:pr-8 lg:pr-16 border-r-8 border-r-white">
               {logo && (
                 <Link href="/">
                   <Image
@@ -48,18 +48,18 @@ function LargeScreenNavigation({ menuItems, logo, socialMedia }: MenuProps): JSX
                 </Link>
               )}
             </div>
-            <div className="text-white whitespace-nowrap">
+            <nav className="text-white whitespace-nowrap">
               {menuItems?.map((menuItem, index, array) => (
                 <>
                   <Link
                     href={menuItem.slug}
-                    className={`py-2 px-3 ${array.length - 1 !== index ? "border-r border-neutral-300" : ""}`}
+                    className={`py-3 px-3 ${array.length - 1 !== index ? "border-r border-neutral-300" : ""}`}
                   >
                     {menuItem.title}
                   </Link>
                 </>
               ))}
-            </div>
+            </nav>
           </div>
         </div>
       </div>
