@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_block_articles",
+  "info": {
+    "displayName": "Articles"
+  },
+  "options": {},
+  "attributes": {
+    "pageSize": {
+      "type": "integer",
+      "required": true,
+      "default": 10
+    }
+  }
+}

@@ -44,7 +44,8 @@
         "block.rich-text",
         "shared.spacing",
         "block.tagged-persons",
-        "block.persons"
+        "block.persons",
+        "block.articles"
       ]
     },
     "leftContents": {
