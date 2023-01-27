@@ -2,6 +2,15 @@ import { gql } from "@apollo/client";
 import { PageDataQuery } from "#/lib/graphql/generated";
 import { ExtractType } from "#/lib/graphql/types";
 import client from "#/lib/graphql/client";
+import {
+  ARTICLE_CAROUSEL_COMPONENT,
+  PEOPLE,
+  PERSON_COMPONENT,
+  RICH_TEXT_COMPONENT,
+  SPACING_COMPONENT,
+  SUB_PAGE_NAVIGATION_COMPONENT,
+  TAGGED_PERSONS_COMPONENT,
+} from "#/lib/graphql/fragments.gql";
 
 export const PAGE_DATA = gql`
   query PageData($slug: String!) {
@@ -13,188 +22,29 @@ export const PAGE_DATA = gql`
           slug
           headerContents {
             __typename
-            ... on ComponentBlockSubPageNavigation {
-              id
-              flat
-            }
-            ... on ComponentBlockCarousel {
-              id
-              maxArticles
-            }
+            ...SubPageNavigationComponent
+            ...ArticleCarouselComponent
           }
           mainContents {
             __typename
-            ... on ComponentBlockRichText {
-              id
-              content
-            }
-            ... on ComponentSharedSpacing {
-              id
-              width
-              height
-            }
-            ... on ComponentBlockPersons {
-              id
-              person {
-                data {
-                  id
-                  attributes {
-                    firstname
-                    lastname
-                    description
-                    email
-                    telephone
-                    tags {
-                      data {
-                        id
-                        attributes {
-                          name
-                        }
-                      }
-                    }
-                    picture {
-                      data {
-                        id
-                        attributes {
-                          url
-                          width
-                          height
-                          hash
-                          mime
-                          name
-                          provider
-                          size
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            ... on ComponentBlockTaggedPersons {
-              id
-              tag {
-                data {
-                  id
-                }
-              }
-            }
+            ...RichTextComponent
+            ...SpacingComponent
+            ...PersonComponent
+            ...TaggedPersonsComponent
           }
           leftContents {
             __typename
-            ... on ComponentBlockRichText {
-              id
-              content
-            }
-            ... on ComponentSharedSpacing {
-              id
-              width
-              height
-            }
-            ... on ComponentBlockPersons {
-              id
-              person {
-                data {
-                  id
-                  attributes {
-                    firstname
-                    lastname
-                    description
-                    email
-                    telephone
-                    tags {
-                      data {
-                        id
-                        attributes {
-                          name
-                        }
-                      }
-                    }
-                    picture {
-                      data {
-                        id
-                        attributes {
-                          url
-                          width
-                          height
-                          hash
-                          mime
-                          name
-                          provider
-                          size
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            ... on ComponentBlockTaggedPersons {
-              id
-              tag {
-                data {
-                  id
-                }
-              }
-            }
+            ...RichTextComponent
+            ...SpacingComponent
+            ...PersonComponent
+            ...TaggedPersonsComponent
           }
           rightContents {
             __typename
-            ... on ComponentBlockRichText {
-              id
-              content
-            }
-            ... on ComponentSharedSpacing {
-              id
-              width
-              height
-            }
-            ... on ComponentBlockPersons {
-              id
-              person {
-                data {
-                  id
-                  attributes {
-                    firstname
-                    lastname
-                    description
-                    email
-                    telephone
-                    tags {
-                      data {
-                        id
-                        attributes {
-                          name
-                        }
-                      }
-                    }
-                    picture {
-                      data {
-                        id
-                        attributes {
-                          url
-                          width
-                          height
-                          hash
-                          mime
-                          name
-                          provider
-                          size
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            ... on ComponentBlockTaggedPersons {
-              id
-              tag {
-                data {
-                  id
-                }
-              }
-            }
+            ...RichTextComponent
+            ...SpacingComponent
+            ...PersonComponent
+            ...TaggedPersonsComponent
           }
           subPages {
             data {
@@ -209,10 +59,16 @@ export const PAGE_DATA = gql`
       }
     }
   }
+  ${SUB_PAGE_NAVIGATION_COMPONENT}
+  ${PERSON_COMPONENT}
+  ${SPACING_COMPONENT}
+  ${ARTICLE_CAROUSEL_COMPONENT}
+  ${RICH_TEXT_COMPONENT}
+  ${PEOPLE}
+  ${TAGGED_PERSONS_COMPONENT}
 `;
 
 export type PageEntityData = ExtractType<PageDataQuery, ["pages", "data"]>;
-export type PageData = ExtractType<PageEntityData, ["attributes"]>;
 
 export async function fetchPageData(slug: string): Promise<PageEntityData | undefined> {
   const { data } = await client.query<PageDataQuery>({

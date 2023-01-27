@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
-export const LINK_FRAGMENT = gql`
-  fragment LinkFragment on ComponentSharedLink {
+export const LINK_COMPONENT = gql`
+  fragment LinkComponent on ComponentSharedLink {
     id
     href
     text
@@ -16,5 +16,92 @@ export const LINK_FRAGMENT = gql`
     }
     isDownload
     isExternal
+  }
+`;
+export const PEOPLE = gql`
+  fragment People on People {
+    firstname
+    lastname
+    description
+    email
+    telephone
+    tags {
+      data {
+        id
+        attributes {
+          name
+        }
+      }
+    }
+    picture {
+      data {
+        id
+        attributes {
+          url
+          width
+          height
+          hash
+          mime
+          name
+          provider
+          size
+        }
+      }
+    }
+  }
+`;
+
+export const PERSON_COMPONENT = gql`
+  fragment PersonComponent on ComponentBlockPersons {
+    id
+    person {
+      data {
+        id
+        attributes {
+          ...People
+        }
+      }
+    }
+  }
+`;
+
+export const TAGGED_PERSONS_COMPONENT = gql`
+  fragment TaggedPersonsComponent on ComponentBlockTaggedPersons {
+    id
+    tag {
+      data {
+        id
+      }
+    }
+  }
+`;
+
+export const RICH_TEXT_COMPONENT = gql`
+  fragment RichTextComponent on ComponentBlockRichText {
+    id
+    content
+  }
+`;
+
+export const ARTICLE_CAROUSEL_COMPONENT = gql`
+  fragment ArticleCarouselComponent on ComponentBlockCarousel {
+    id
+    maxArticles
+  }
+`;
+
+export const SPACING_COMPONENT = gql`
+  fragment SpacingComponent on ComponentSharedSpacing {
+    id
+    width
+    height
+  }
+`;
+
+export const SUB_PAGE_NAVIGATION_COMPONENT = gql`
+  fragment SubPageNavigationComponent on ComponentBlockSubPageNavigation {
+    __typename
+    id
+    flat
   }
 `;

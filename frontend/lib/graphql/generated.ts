@@ -1673,6 +1673,20 @@ export type PromotionArticlesQuery = { __typename?: 'Query', articles?: { __type
 
 export type LinkFragmentFragment = { __typename?: 'ComponentSharedLink', id: string, href: string, text?: string | null, target?: Enum_Componentsharedlink_Target | null, isDownload?: boolean | null, isExternal?: boolean | null, icon?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', attributes?: { __typename?: 'UploadFile', url: string, alternativeText?: string | null } | null } | null } | null };
 
+export type PeopleFragment = { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, telephone?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, hash: string, mime: string, name: string, provider: string, size: number } | null } | null } | null };
+
+export type PersonFragment = { __typename?: 'ComponentBlockPersons', id: string, person?: { __typename?: 'PeopleEntityResponse', data?: { __typename?: 'PeopleEntity', id?: string | null, attributes?: { __typename?: 'People', firstname: string, lastname: string, description?: string | null, email?: string | null, telephone?: string | null, tags?: { __typename?: 'TagRelationResponseCollection', data: Array<{ __typename?: 'TagEntity', id?: string | null, attributes?: { __typename?: 'Tag', name: string } | null }> } | null, picture?: { __typename?: 'UploadFileEntityResponse', data?: { __typename?: 'UploadFileEntity', id?: string | null, attributes?: { __typename?: 'UploadFile', url: string, width?: number | null, height?: number | null, hash: string, mime: string, name: string, provider: string, size: number } | null } | null } | null } | null } | null } | null };
+
+export type TaggedPersonsFragment = { __typename?: 'ComponentBlockTaggedPersons', id: string, tag?: { __typename?: 'TagEntityResponse', data?: { __typename?: 'TagEntity', id?: string | null } | null } | null };
+
+export type RichTextFragment = { __typename?: 'ComponentBlockRichText', id: string, content?: string | null };
+
+export type ArticleCarouselFragment = { __typename?: 'ComponentBlockCarousel', id: string, maxArticles?: number | null };
+
+export type SpacingFragment = { __typename?: 'ComponentSharedSpacing', id: string, width?: string | null, height?: string | null };
+
+export type SubPageNavigationFragment = { __typename: 'ComponentBlockSubPageNavigation', id: string, flat: boolean };
+
 export type HomepageQueryVariables = Exact<{ [key: string]: never; }>;
 
 

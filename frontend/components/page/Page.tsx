@@ -1,5 +1,5 @@
-import { PageData } from "#/lib/graphql/page.gql";
 import { DynamicContent } from "#/components/dynamic/DynamicContent";
+import { Page as PageData } from "#/lib/graphql/generated";
 
 type Props = {
   data: PageData;
@@ -11,35 +11,51 @@ export function Page(props: Props): JSX.Element {
     <>
       <div className="flex flex-row">
         {headerContents?.map((content) => {
-          if (!content || content.__typename === "Error") {
-            return null;
+          if (content) {
+            return (
+              <DynamicContent key={"id" in content ? content.id : content.code} component={content} page={props.data} />
+            );
           }
-          return <DynamicContent key={content.id} component={content} />;
         })}
       </div>
       <div className="container flex flex-row place-content-between">
         <div className="">
           {leftContents?.map((content) => {
-            if (!content || content.__typename === "Error") {
-              return null;
+            if (content) {
+              return (
+                <DynamicContent
+                  key={"id" in content ? content.id : content.code}
+                  component={content}
+                  page={props.data}
+                />
+              );
             }
-            return <DynamicContent key={content.id} component={content} />;
           })}
         </div>
         <main className="">
           {mainContents?.map((content) => {
-            if (!content || content.__typename === "Error") {
-              return null;
+            if (content) {
+              return (
+                <DynamicContent
+                  key={"id" in content ? content.id : content.code}
+                  component={content}
+                  page={props.data}
+                />
+              );
             }
-            return <DynamicContent key={content.id} component={content} />;
           })}
         </main>
         <div className="">
           {rightContents?.map((content) => {
-            if (!content || content.__typename === "Error") {
-              return null;
+            if (content) {
+              return (
+                <DynamicContent
+                  key={"id" in content ? content.id : content.code}
+                  component={content}
+                  page={props.data}
+                />
+              );
             }
-            return <DynamicContent key={content.id} component={content} />;
           })}
         </div>
       </div>

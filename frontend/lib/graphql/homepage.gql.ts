@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { LINK_FRAGMENT } from "./fragments.gql";
+import { LINK_COMPONENT } from "./fragments.gql";
 import { HomepageQuery } from "./generated";
 import { ExtractType } from "./types";
 import client from "#/lib/graphql/client";
@@ -50,7 +50,7 @@ export const HOMEPAGE = gql`
                 }
               }
               links {
-                ...LinkFragment
+                ...LinkComponent
               }
             }
           }
@@ -90,7 +90,7 @@ export const HOMEPAGE = gql`
       }
     }
   }
-  ${LINK_FRAGMENT}
+  ${LINK_COMPONENT}
 `;
 
 export type HomepageData = ExtractType<HomepageQuery, ["homepage", "data", "attributes"]>;
