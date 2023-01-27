@@ -12,17 +12,14 @@ export function MainNavigation({ menuItems }: Props): JSX.Element {
   return (
     <nav className="text-white whitespace-nowrap">
       {menuItems?.map((menuItem, index, array) => (
-        <>
-          <Link
-            href={menuItem.slug}
-            className={`py-2 px-3 ${array.length - 1 !== index ? "border-r border-neutral-300" : ""} ${
-              activeItem === menuItem ? "underline underline-offset-8" : ""
-            }`}
-            onClick={() => setActiveItem(menuItem)}
-          >
-            {menuItem.title}
-          </Link>
-        </>
+        <Link
+          key={menuItem.slug}
+          href={menuItem.slug}
+          className={`py-2 px-3 ${array.length - 1 !== index ? "border-r border-neutral-300" : ""}`}
+          onClick={() => setActiveItem(menuItem)}
+        >
+          {menuItem.title}
+        </Link>
       ))}
     </nav>
   );

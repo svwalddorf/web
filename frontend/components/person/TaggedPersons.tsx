@@ -20,7 +20,7 @@ export async function TaggedPersons({ tagId }: Props): Promise<JSX.Element | nul
     <>
       {data.peoples?.data.map((person) => {
         if (person.attributes) {
-          return <PersonCard person={person.attributes} />;
+          return <PersonCard key={person.id} person={person.attributes} />;
         }
         return null;
       })}
