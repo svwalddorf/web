@@ -23,9 +23,7 @@ export function PersonCard({ person }: Props): JSX.Element {
             {person.firstname} {person.lastname}
           </h5>
           <p className="text-gray-700 text-base mb-4">
-            {person.tags?.data.map(
-              (tag, index, array) => `${tag.attributes?.name}${array.length - 1 !== index ? ", " : ""}`
-            )}
+            {person.tags?.data.map((tag) => tag.attributes?.name).join(", ")}
           </p>
           {person.description && <p className="text-gray-700 text-base mb-4">{person.description}</p>}
           <div className="grid grid-cols-[auto_auto]">
