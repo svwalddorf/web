@@ -105,3 +105,28 @@ export const SUB_PAGE_NAVIGATION_COMPONENT = gql`
     flat
   }
 `;
+
+export const ARTICLES_COMPONENT = gql`
+  fragment ArticlesComponent on ComponentBlockArticles {
+    id
+    pageSize
+  }
+`;
+
+export const FILE_FRAGMENT = gql`
+  fragment FileFragment on UploadFileEntityResponse {
+    data {
+      id
+      attributes {
+        url
+        width
+        height
+        hash
+        mime
+        name
+        provider
+        size
+      }
+    }
+  }
+`;

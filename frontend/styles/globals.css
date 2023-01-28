@@ -41,3 +41,11 @@ h6  {
 p {
     @apply text-base font-light my-2
 }
+
+.news-title-shadow {
+    box-shadow: 10px 0 0 rgba(255, 255, 255, 0.75), -10px 0 0 rgba(255, 255, 255, 0.75);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    -ms-box-decoration-break: clone;
+    -o-box-decoration-break: clone;
+}

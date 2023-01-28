@@ -1,4 +1,4 @@
-import { fetchPageData } from "#/lib/graphql/page.gql";
+import { fetchPageData } from "#/components/page/page.gql";
 import { Page } from "#/components/page/Page";
 import { NextPageProps } from "#/lib/types";
 

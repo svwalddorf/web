@@ -4,6 +4,7 @@ import { ExtractType } from "#/lib/graphql/types";
 import client from "#/lib/graphql/client";
 import {
   ARTICLE_CAROUSEL_COMPONENT,
+  ARTICLES_COMPONENT,
   PEOPLE,
   PERSON_COMPONENT,
   RICH_TEXT_COMPONENT,
@@ -31,6 +32,7 @@ export const PAGE_DATA = gql`
             ...SpacingComponent
             ...PersonComponent
             ...TaggedPersonsComponent
+            ...ArticlesComponent
           }
           leftContents {
             __typename
@@ -66,6 +68,7 @@ export const PAGE_DATA = gql`
   ${RICH_TEXT_COMPONENT}
   ${PEOPLE}
   ${TAGGED_PERSONS_COMPONENT}
+  ${ARTICLES_COMPONENT}
 `;
 
 export type PageEntityData = ExtractType<PageDataQuery, ["pages", "data"]>;

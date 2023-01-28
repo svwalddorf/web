@@ -1,5 +1,5 @@
 import { NextPageProps } from "#/lib/types";
-import { fetchPageData } from "#/lib/graphql/page.gql";
+import { fetchPageData } from "#/components/page/page.gql";
 import { DynamicContent } from "#/components/dynamic/DynamicContent";
 
 export default async function Page(props: NextPageProps): Promise<JSX.Element> {

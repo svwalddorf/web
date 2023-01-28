@@ -1,6 +1,7 @@
 import { gql } from "@apollo/client";
 import { ExtractType } from "#/lib/graphql/types";
 import { TaggedPeopleQuery } from "#/lib/graphql/generated";
+import { FILE_FRAGMENT } from "#/lib/graphql/fragments.gql";
 
 export const TAGGED_PEOPLE = gql`
   query TaggedPeople($tagId: ID!) {
@@ -22,24 +23,13 @@ export const TAGGED_PEOPLE = gql`
             }
           }
           picture {
-            data {
-              id
-              attributes {
-                url
-                width
-                height
-                hash
-                mime
-                name
-                provider
-                size
-              }
-            }
+            ...FileFragment
           }
         }
       }
     }
   }
+  ${FILE_FRAGMENT}
 `;
 
 export type PeopleData = ExtractType<TaggedPeopleQuery, ["peoples", "data"]>;
