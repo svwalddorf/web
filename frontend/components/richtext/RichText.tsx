@@ -6,7 +6,7 @@ type Props = {
 export default function RichText({ content }: Props): JSX.Element | null {
   if (content) {
     return (
-      <div className="mx-4">
+      <div className="mt-10 p-8 shadow-lg bg-white">
         <ReactMarkdown>{content}</ReactMarkdown>
       </div>
     );
